@@ -1,0 +1,107 @@
+:root {
+    --white: #ffffff;
+    --light-gray: #B2B2B2;
+    --black: #222222;
+}
+
+*,
+:after,
+:before {
+    box-sizing: border-box;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+body {
+    font-family: sans-serif;
+    padding: 0px;
+    margin: 0px;
+    font-size: 1.2rem;
+}
+
+ul,
+ol {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.wrapper {
+    position: relative;
+    height: 100%;
+    padding-left: 4rem;
+}
+
+
+.sidebar {
+    width: 300px;
+    display: inline-block;
+    height: 100vh;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    color: var(--white);
+    background-color: var(--black);
+    padding: 1.5rem;
+
+    .close {
+        cursor: pointer;
+    }
+
+    .student-info {
+        margin-top: 4rem;
+
+        li {
+            display: flex;
+            align-items: center;
+            justify-content: start;
+            margin-top: 1.5rem;
+
+            .label {
+                margin-right: 2rem;
+            }
+        }
+    }
+}
+
+.student-data {
+    .student-section {
+        padding: .5rem;
+        color: var(--black);
+    }
+
+    .student-name {
+        display: inline-block;
+        padding: .5rem;
+        background-color: var(--light-gray);
+        color: var(--black);
+        position: relative;
+        cursor: pointer;
+
+        &:hover {
+            background-color: var(--black);
+            color: var(--white);
+        }
+
+        .hover-data {
+            position: absolute;
+            top: 50px;
+            left: 70px;
+            width: 240px;
+            background-color: var(--black);
+            color: var(--white);
+            display: none;
+            z-index: 9;
+            padding: 1rem;
+        }
+    }
+
+    .student-name:hover .hover-data {
+        display: inline-block;
+    }
+
+}
