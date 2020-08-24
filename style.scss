@@ -42,7 +42,7 @@ ol {
 
 .sidebar {
     width: 300px;
-    display: inline-block;
+    display: none;
     height: 100vh;
     position: fixed;
     top: 0;
@@ -51,6 +51,7 @@ ol {
     color: var(--white);
     background-color: var(--black);
     padding: 1.5rem;
+    z-index: 9;
 
     .close {
         cursor: pointer;
@@ -73,7 +74,6 @@ ol {
 }
 
 .student-data {
-
     .class-name {
         width: 51vw;
         background-color: var(--blue);
@@ -81,15 +81,14 @@ ol {
         display: flex;
         justify-content: space-between;
         align-items: center;
-
-        span {
-            color: var(--yellow);
-            font-weight: bold;
-            font-size: 1.5rem;
-        }
+        color: var(--yellow);
+        font-weight: bold;
+        font-size: 1.5rem;
+        padding: .5rem;
 
         .toggle {
             font-size: 1rem;
+            cursor: pointer;
         }
     }
 
@@ -98,12 +97,22 @@ ol {
         background-color: var(--black);
         margin-top: .5rem;
         margin-left: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        font-size: .9rem;
+        padding-left: .5rem;
+    }
+
+    .add-button {
+        background-color: var(--green);
+        padding: .5rem;
+        cursor: pointer;
     }
 
     .class-name,
     .section-name {
         color: var(--white);
-        padding: .5rem;
     }
 
     .student-names {
@@ -111,13 +120,16 @@ ol {
         margin-left: 2rem;
 
         li {
-            min-width: 100px;
+            min-width: 50px;
             display: inline-block;
-            padding: .5rem 1rem;
+            padding: .3rem .5rem;
+            font-size: .9rem;
             background-color: var(--light-gray-x);
             color: var(--black);
             position: relative;
             cursor: pointer;
+            margin-right: 1rem;
+            text-transform: capitalize;
 
             &:hover {
                 background-color: var(--green);
@@ -152,4 +164,17 @@ ol {
         display: inline-block;
     }
 
+    .active {
+        display: none;
+    }
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.8);
+    z-index: 1;
 }
