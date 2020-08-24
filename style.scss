@@ -1,7 +1,11 @@
 :root {
     --white: #ffffff;
     --light-gray: #B2B2B2;
+    --light-gray-x: #f1f1f1;
     --black: #222222;
+    --blue: #1e008a;
+    --green: #04bb3b;
+    --yellow: #e1f00c;
 }
 
 *,
@@ -40,7 +44,7 @@ ol {
     width: 300px;
     display: inline-block;
     height: 100vh;
-    position: absolute;
+    position: fixed;
     top: 0;
     bottom: 0;
     right: 0;
@@ -69,38 +73,82 @@ ol {
 }
 
 .student-data {
-    .student-section {
-        padding: .5rem;
-        color: var(--black);
-    }
 
-    .student-name {
-        display: inline-block;
-        padding: .5rem;
-        background-color: var(--light-gray);
-        color: var(--black);
-        position: relative;
-        cursor: pointer;
+    .class-name {
+        width: 51vw;
+        background-color: var(--blue);
+        margin-top: 1rem;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
 
-        &:hover {
-            background-color: var(--black);
-            color: var(--white);
+        span {
+            color: var(--yellow);
+            font-weight: bold;
+            font-size: 1.5rem;
         }
 
-        .hover-data {
+        .toggle {
+            font-size: 1rem;
+        }
+    }
+
+    .section-name {
+        width: 50vw;
+        background-color: var(--black);
+        margin-top: .5rem;
+        margin-left: 1rem;
+    }
+
+    .class-name,
+    .section-name {
+        color: var(--white);
+        padding: .5rem;
+    }
+
+    .student-names {
+        margin-top: .5rem;
+        margin-left: 2rem;
+
+        li {
+            min-width: 100px;
+            display: inline-block;
+            padding: .5rem 1rem;
+            background-color: var(--light-gray-x);
+            color: var(--black);
+            position: relative;
+            cursor: pointer;
+
+            &:hover {
+                background-color: var(--green);
+                color: var(--white);
+            }
+        }
+
+
+
+        .student-info-hover {
             position: absolute;
-            top: 50px;
-            left: 70px;
-            width: 240px;
+            top: 39px;
+            left: 0px;
+            min-width: 240px;
+            width: 340px;
             background-color: var(--black);
             color: var(--white);
             display: none;
             z-index: 9;
             padding: 1rem;
+            font-size: 1rem;
+            ;
+
+            .list {
+                display: block;
+                padding: .4rem 0;
+            }
         }
     }
 
-    .student-name:hover .hover-data {
+    .student-names li:hover .student-info-hover {
         display: inline-block;
     }
 
