@@ -6,6 +6,7 @@
     --blue: #1e008a;
     --green: #04bb3b;
     --yellow: #e1f00c;
+    --red: #e74b36;
 }
 
 *,
@@ -16,6 +17,11 @@
 
 a {
     text-decoration: none;
+}
+
+h1,
+h2 {
+    margin: 0;
 }
 
 
@@ -122,7 +128,7 @@ ol {
         li {
             min-width: 50px;
             display: inline-block;
-            padding: .3rem .5rem;
+            padding-left: .5rem;
             font-size: .9rem;
             background-color: var(--light-gray-x);
             color: var(--black);
@@ -139,25 +145,25 @@ ol {
 
 
 
-        .student-info-hover {
-            position: absolute;
-            top: 39px;
-            left: 0px;
-            min-width: 240px;
-            width: 340px;
-            background-color: var(--black);
-            color: var(--white);
-            display: none;
-            z-index: 9;
-            padding: 1rem;
-            font-size: 1rem;
-            ;
+        // .student-info-hover {
+        //     position: absolute;
+        //     top: 39px;
+        //     left: 0px;
+        //     min-width: 240px;
+        //     width: 340px;
+        //     background-color: var(--black);
+        //     color: var(--white);
+        //     display: none;
+        //     z-index: 9;
+        //     padding: 1rem;
+        //     font-size: 1rem;
+        //     ;
 
-            .list {
-                display: block;
-                padding: .4rem 0;
-            }
-        }
+        //     .list {
+        //         display: block;
+        //         padding: .4rem 0;
+        //     }
+        // }
     }
 
     .student-names li:hover .student-info-hover {
@@ -177,4 +183,85 @@ ol {
     bottom: 0;
     background-color: rgba(0, 0, 0, 0.8);
     z-index: 1;
+}
+
+// Modal Style
+
+.modal-container {
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.modal-container {
+    position: fixed;
+    top: 50px;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    z-index: 1050;
+    display: none;
+    outline: 0;
+}
+
+.modal-dialog {
+    width: 500px;
+    margin: 0px auto;
+    background-color: white;
+    border-radius: 5px;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #dcdcdc;
+    padding: .5em;
+    border-radius: 5px 5px 0 0;
+}
+
+.modal-header h2 {
+    font-size: 1.4rem;
+}
+
+.modal-body {
+    padding: 1rem;
+}
+
+.modal-footer {
+    padding: .5em;
+    margin-top: 1rem;
+    border-top: 1px solid #e1e1e1;
+    display: flex;
+    justify-content: flex-end;
+}
+
+.modal-footer .add-new {
+    font-size: 1rem;
+    padding: .5em 1rem;
+    color: var(--white);
+    background-color: var(--green);
+    border-radius: 5px;
+}
+
+.add-new,
+.modal-close-btn {
+    cursor: pointer;
+}
+
+.add-new-student {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 1rem;
+}
+
+.add-new-student input {
+    padding: .4rem .6rem;
+}
+
+.student-names li span {
+    background-color: var(--red);
+    color: var(--white);
+    padding: .5rem;
+    margin-left: .7rem;
+    display: inline-block;
 }
