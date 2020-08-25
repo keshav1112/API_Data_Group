@@ -1,3 +1,7 @@
+let modalContainer = document.querySelector(".modal-container");
+let modalCloseBtn = document.querySelector(".modal-close-btn");
+let addNewStudentBtn = document.querySelector(".add-new");
+
 function createClassDiv(className) {
   let sectionContainer = document.createElement("div");
   sectionContainer["className"] = "sec-container";
@@ -42,31 +46,71 @@ function createSectionDiv(sectionName) {
   innerDom.appendChild(addNewBtn);
   addNewBtn.appendChild(createTextNode("Add Student"));
 
+  addNewBtn.addEventListener("click", studentModal);
+
   dom.appendChild(innerDom);
   return dom;
 }
 
+function studentModal() {
+  modalContainer.style.display = "block";
+  overlayCreate();
+}
+
+function closeModalOverlay(closeOverlay) {
+  console.log("closeOverlay", closeOverlay);
+  // closeOverlay.remove();
+  modalContainer.remove();
+}
+// modalCloseBtn.addEventListener("click", closeModalOverlay);
+
+function removeStudent(e) {
+  console.log(e);
+}
+
 function createStudentLi(student, fn) {
   let dom = document.createElement("li");
-  dom["data-rollNo"] = student.rollNumber;
+  // dom["data-rollNo"] = student.rollNumber;
+  let closeBtn = document.createElement("span");
+  closeBtn.appendChild(createTextNode("X"));
   dom.appendChild(createTextNode(student.name));
+  dom.appendChild(closeBtn);
   //fn is callback Function
   dom.addEventListener("click", fn.bind(null, student));
+  closeBtn.addEventListener("click", removeStudent);
   return dom;
 }
 
-function outsideClick(overlayParam) {
-  console.log(overlayParam);
-  let callst = document.querySelector(".wrapper");
+function overlayCreate() {
+  let callst = document.querySelector("body");
   let overlay = document.createElement("div");
   overlay["className"] = "overlay";
   callst.appendChild(overlay);
-  // if (overlayParam.target === removeOverlay) {
-  //   removeOverlay.remove();
+  let closeOverlay = document.querySelector(".overlay");
+  modalCloseBtn.addEventListener("click", closeModalOverlay);
+  // if (overlayParam.target === overlay) {
+  //   overlay.remove();
   // }
 }
 
-// window.addEventListener("click", outsideClick);
+function addNewStudent(student) {
+  let name = document.getElementById("name").value;
+  let newStudentList = document.querySelector(".student-names");
+  liNode = document.createElement("li");
+  liNode.appendChild(createTextNode(name));
+  let closeBtn = document.createElement("span");
+  closeBtn.appendChild(createTextNode("X"));
+  liNode.appendChild(closeBtn);
+  // let age = document.getElementById("age").value;
+  // let gen = document.getElementById("gen").value;
+  // let sClass = document.getElementById("class").value;
+  // let sSection = document.getElementById("sec").value;
+  // let roll = document.getElementById("rolln").value;
+  // let sport = document.getElementById("sport").value;
+  newStudentList.appendChild(liNode);
+}
+
+addNewStudentBtn.addEventListener("click", addNewStudent);
 
 function createTextNode(val) {
   return document.createTextNode(val);
