@@ -98,9 +98,9 @@ function studentModal() {
   overlayCreate();
 }
 
-function removeStudent(el, e) {
+function removeStudent(student, e) {
   e.stopPropagation();
-  el.remove();
+  Redux.dispatch(ActionCreator.removeStudent(student));
 }
 
 function createStudentLi(student, fn) {
@@ -111,7 +111,7 @@ function createStudentLi(student, fn) {
   dom.appendChild(createTextNode(student.name));
   dom.appendChild(closeBtn);
   dom.addEventListener("click", fn.bind(null, student));
-  closeBtn.addEventListener("click", removeStudent.bind(null, dom));
+  closeBtn.addEventListener("click", removeStudent.bind(null, student));
   return dom;
 }
 
@@ -214,7 +214,6 @@ function render(state, container) {
   rootParent.replaceChild(rootNode, container);
 }
 
-const container = document.getElementById("root");
 (async () => {
   const students = await getApi();
   Redux.dispatch(ActionCreator.addStudents(students));
@@ -223,5 +222,6 @@ const container = document.getElementById("root");
 Redux.createStore({ students: [] });
 
 Redux.subscribe((state) => {
+  const container = document.getElementById("root");
   render(state.students, container);
 });
